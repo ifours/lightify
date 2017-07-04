@@ -23,7 +23,7 @@ const Card = styled.div`
     transition-delay: 0s !important;
   }
 
-${'' /* TODO: we need nested image for that */}
+  ${'' /* TODO: we need nested image for that */}
   ${props => props.artical && css`
     > ${CardHero} {
       width: 100%;
@@ -33,6 +33,12 @@ ${'' /* TODO: we need nested image for that */}
       background-repeat: no-repeat;
     }
   `}
+
+  @media only screen and (max-width: 500px) {
+    width: 320px;
+    height: auto;
+    margin: 15px 0;
+  }
 `;
 
 export const CardHero = styled.div`
@@ -52,6 +58,11 @@ export const CardHero = styled.div`
   padding: 20px;
 
   height: 296px;
+
+  @media only screen and (max-width: 500px) {
+    padding: 0 20px 20px 20px;
+    height: 267px;
+  }
 `;
 
 export const CardBody = styled.div`
@@ -75,6 +86,12 @@ export const CardFooterView = styled.div`
   bottom: 0px;
   margin: 0 auto;
   width: 100%;
+
+  @media only screen and (max-width: 500px) {
+    position: relative;
+    display: inline-block;
+    padding-top: 0px;
+  }
 `;
 
 export const CardFooterWrapper = styled.div`

@@ -18,6 +18,11 @@ const NavLogo = styled.div`
   background-color: transparent;
 
   margin-right: auto;
+
+
+  @media only screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export default NavLogo;

@@ -8,6 +8,7 @@ import NavList from './components/NavList';
 import NavItem from './components/NavItem';
 
 import Container from './components/Container';
+import Footer from './components/Footer';
 
 import CardList from './components/CardList';
 import Card, { CardHero, CardBody, CardFooter, CardFooterItem, CardAvatar } from './components/Card';
@@ -24,7 +25,7 @@ class App extends Component {
           <NavList>
             <NavItem>Articles</NavItem>
             <NavItem>Videos</NavItem>
-            <NavItem>Tools & Resources</NavItem>
+            <NavItem>Resources</NavItem>
             <NavItem>Careers</NavItem>
           </NavList>
         </Navigation>
@@ -161,6 +162,8 @@ class App extends Component {
             </CardList>
           </Container>
         </MainSection>
+        <Footer>
+        </Footer>
       </div>
     );
   }

@@ -10,6 +10,17 @@ const NavItem = styled.li`
   line-height: 62px;
   display: inline-block;
   vertical-align: top;
+
+  cursor: pointer;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  @media only screen and (max-width: 500px){
+    margin: 0px 19px 0 0;
+    display: inline-block;
+  }
 `;
 
 export default NavItem;

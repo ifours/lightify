@@ -9,9 +9,13 @@ const Navigation = styled.nav`
   -webkit-backdrop-filter: blur(20px);
   z-index: 9999;
   padding: 2px 0px 0px 24px;
-  position: absolute;
   top: 0;
   width: 100%;
+
+  @media only screen and (max-width: 500px) {
+    padding: 0 0 0 10px;
+    min-width: 320px;
+  }
 `;
 
 export default Navigation;
