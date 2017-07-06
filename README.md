@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/IFours/facebook-design.svg?style=svg&circle-token=fa960a68750727f54be9e06ea613d5793a6c4918)](https://circleci.com/gh/IFours/facebook-design)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
