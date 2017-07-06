@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 
-import Header from './components/Header';
-import MainSection from './components/MainSection';
-import Navigation from './components/Navigation';
-import NavLogo from './components/NavLogo';
-import NavList from './components/NavList';
-import NavItem from './components/NavItem';
+import Header from 'components/Header';
+import MainSection from 'components/MainSection';
+import Navigation from 'components/Navigation';
+import NavLogo from 'components/NavLogo';
+import NavList from 'components/NavList';
+import NavItem from 'components/NavItem';
 
-import Container from './components/Container';
-import Footer from './components/Footer';
+import Container from 'components/Container';
+import Footer from 'components/Footer';
 
-import CardList from './components/CardList';
-import Card, { CardHero, CardBody, CardFooter, CardFooterItem, CardAvatar } from './components/Card';
+import CardList from 'components/CardList';
+import Card, { CardHero, CardBody, CardFooter, CardFooterItem, CardAvatar } from 'components/Card';
 
-import { Heading, Title, Text } from './components/Typography';
-import { H3 } from './components/Primitives';
+import { Heading, Title, Text } from 'components/Typography';
+import { H3 } from 'components/Primitives';
 
 class App extends Component {
   render() {
