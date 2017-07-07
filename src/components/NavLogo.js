@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NavLogo = styled.div`
-  background-image: url(http://facebook.design/public/images/logo-fb.svg);
+  background-image: url(${process.env.PUBLIC_URL}/spotify.svg);
   background-size: 30px 30px;
   background-repeat: no-repeat;
   background-position: left center;

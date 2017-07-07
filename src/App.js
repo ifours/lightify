@@ -22,6 +22,8 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchResources();
+    this.props.fetchFeaturedPlaylists();
+    this.props.fetchNewReleases();
   }
 
   renderResource({ image, title, description, tags, id }) {
@@ -71,11 +73,60 @@ class App extends Component {
     });
   }
 
+  renderFeatured(playlist) {
+    const { id, images, name } = playlist;
+    const { url } = images[0];
+
+    return (
+      <Card key={id}>
+        <CardHero src={url} />
+        <CardBody>
+          <Title>{name}</Title>
+          {/* <Text>{description}</Text> */}
+        </CardBody>
+        <CardFooter>
+          <CardFooterItem main>Trending</CardFooterItem>
+          <CardFooterItem>New</CardFooterItem>
+        </CardFooter>
+      </Card>
+    );
+  }
+
+  renderFeaturedList() {
+    const { featured: { playlists: { items } } } = this.props;
+
+    return items.map(playlist => this.renderFeatured(playlist));
+  }
+
+  renderRelease(album) {
+    const { id, images, name } = album;
+    const { url } = images[0];
+
+    return (
+      <Card key={id}>
+        <CardHero src={url} />
+        <CardBody>
+          <Title>{name}</Title>
+          {/* <Text>{description}</Text> */}
+        </CardBody>
+        <CardFooter>
+          <CardFooterItem main>Trending</CardFooterItem>
+          <CardFooterItem>New</CardFooterItem>
+        </CardFooter>
+      </Card>
+    );
+  }
+
+  renderReleasesList() {
+    return this.props.releases.map(album => this.renderRelease(album));
+  }
+
   render() {
+    const { featured: { message = 'What’s on our mind?' } } = this.props;
     return (
       <div>
         <Navigation>
-          <NavLogo>Design</NavLogo>
+          <NavLogo>Lightify</NavLogo>
           <NavList>
             <NavItem>Articles</NavItem>
             <NavItem>Videos</NavItem>
@@ -85,14 +136,28 @@ class App extends Component {
         </Navigation>
         <MainSection>
           <Header>
-            <Heading>What’s on our mind?</Heading>
-            <H3>Collection of articles, videos, and resources made by designers at Facebook.</H3>
+            <Heading>{message}</Heading>
+            <H3>Collection of playlists, tracks, and resources made by makers at Spotify.</H3>
           </Header>
           <Container>
             <CardList>
-              {this.renderList()}
+              {this.renderFeaturedList()}
             </CardList>
           </Container>
+          <Header>
+            <Heading>New realess</Heading>
+            <H3>Every days new music by Spotify.</H3>
+          </Header>
+          <Container>
+            <CardList>
+              {this.renderReleasesList()}
+            </CardList>
+          </Container>
+          {/* <Container>
+            <CardList>
+              {this.renderList()}
+            </CardList>
+          </Container> */}
         </MainSection>
         <Footer>
         </Footer>
