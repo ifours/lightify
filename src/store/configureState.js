@@ -1,7 +1,9 @@
 export default function() {
-  return {
-    session: {
-      token: sessionStorage.getItem('token')
-    }
-  };
+  return JSON.parse(sessionStorage.getItem('state')) || undefined;
+  // return undefined;
+  // return {
+  //   session: {
+  //     token: sessionStorage.getItem('token')
+  //   }
+  // };
 }

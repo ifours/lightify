@@ -35,3 +35,6 @@ export const getNewReleases = createSelector(
 
 export const isLoggedIn = state => !!state.session.token;
 export const getToken = state => state.session.token;
+
+export const getPlaylist = (state, id) => state.entities.playlists[id];
+export const getTracksHrefFromPlaylist = (state, id) => getPlaylist(state, id).tracks.href;

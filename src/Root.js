@@ -12,7 +12,7 @@ export default class Root extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <div>
-            <Route exact path="/" component={App} />
+            <Route path="/" component={App} />
             <Route exact path="/callback" component={Callback}/>
           </div>
         </BrowserRouter>

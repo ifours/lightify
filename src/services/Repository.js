@@ -38,6 +38,16 @@ export class Repository {
 
     return await response.json();
   }
+
+  async fetchPlaylistTracks(href, token) {
+    const response = await fetch(href, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    return await response.json();
+  }
 }
 
 export default new Repository();

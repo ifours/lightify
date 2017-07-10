@@ -1,23 +1,16 @@
 import { connect } from 'react-redux';
 
-import { getResources, getFeaturedPlaylists, getNewReleases, isLoggedIn } from 'selectors';
+import { getResources, getFeaturedPlaylists, isLoggedIn } from 'selectors';
 
 const mapStateToProps = state => ({
   resources: getResources(state),
   featured: getFeaturedPlaylists(state),
-  releases: getNewReleases(state),
   loggedIn: isLoggedIn(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchResources() {
-    dispatch({ type: 'FETCH_RESOURCES_REQUEST' });
-  },
   fetchFeaturedPlaylists() {
     dispatch({ type: 'FETCH_FEATURED_PLAYLISTS_REQUEST' });
-  },
-  fetchNewReleases() {
-    dispatch({ type: 'FETCH_NEW_RELEASES_REQUEST' });
   }
 });
 
