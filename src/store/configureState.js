@@ -1,3 +1,7 @@
 export default function() {
-  return undefined;
+  return {
+    session: {
+      token: sessionStorage.getItem('token')
+    }
+  };
 }

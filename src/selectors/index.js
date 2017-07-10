@@ -32,3 +32,6 @@ export const getNewReleases = createSelector(
   getReleases,
   (albumsEntities, releases) => releases.items.map(id => albumsEntities[id])
 );
+
+export const isLoggedIn = state => !!state.session.token;
+export const getToken = state => state.session.token;

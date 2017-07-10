@@ -18,12 +18,19 @@ import { H3 } from 'components/Primitives';
 
 import useResources from 'connects/resources';
 
+import Repository from 'services/Repository';
+
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchResources();
-    this.props.fetchFeaturedPlaylists();
-    this.props.fetchNewReleases();
+    const { loggedIn, fetchFeaturedPlaylists, fetchNewReleases } = this.props;
+
+    if (loggedIn) {
+      fetchFeaturedPlaylists();
+      fetchNewReleases();
+    } else {
+      Repository.authorize();
+    }
   }
 
   renderResource({ image, title, description, tags, id }) {
@@ -123,15 +130,16 @@ class App extends Component {
 
   render() {
     const { featured: { message = 'What’s on our mind?' } } = this.props;
+
     return (
       <div>
         <Navigation>
           <NavLogo>Lightify</NavLogo>
           <NavList>
-            <NavItem>Articles</NavItem>
-            <NavItem>Videos</NavItem>
-            <NavItem>Resources</NavItem>
-            <NavItem>Careers</NavItem>
+            <NavItem>Featured</NavItem>
+            <NavItem>Genres & Moods</NavItem>
+            <NavItem>New Releases</NavItem>
+            <NavItem>Discover</NavItem>
           </NavList>
         </Navigation>
         <MainSection>
