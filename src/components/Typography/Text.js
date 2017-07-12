@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const Text = styled.p`
-  margin-bottom: 24px;
-
+const Text = styled.span`
   display: -webkit-box;
   font-size: 14px;
   font-weight: 400;

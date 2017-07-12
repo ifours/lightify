@@ -30,7 +30,7 @@ export default function entities(state = initialState, action) {
           }
         }
       },
-      tracks: { ...currentTracks, tracks }
+      tracks: { ...currentTracks, ...tracks }
     };
   }
 

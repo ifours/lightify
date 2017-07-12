@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
-import { getPlaylist } from 'selectors';
+import { getPlaylist, getPlaylistTracks } from 'selectors';
 
-const mapStateToProps = (state, { match: { params: { id } } }) => ({
-  playlist: getPlaylist(state, id),
+const mapStateToProps = (state, { match: { params: { playlistId } } }) => ({
+  playlist: getPlaylist(state, playlistId),
+  tracks: getPlaylistTracks(state, playlistId),
 });
 
-const mapDispatchToProps = (dispatch, { match: { params: { id } } }) => ({
+const mapDispatchToProps = (dispatch, { match: { params: { userId, playlistId } } }) => ({
   fetchPlaylist() {
-    dispatch({ type: 'FETCH_PLAYLIST_REQUEST', payload: { id } });
+    dispatch({ type: 'FETCH_PLAYLIST_REQUEST', payload: { userId, playlistId } });
   },
 });
 

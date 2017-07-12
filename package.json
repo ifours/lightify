@@ -9,6 +9,7 @@
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-router-scroll": "ytase/react-router-scroll#build",
     "react-transition-group": "^2.0.2",
     "redux": "^3.7.1",
     "redux-saga": "^0.15.4",

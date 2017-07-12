@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 
-import { getFeaturedPlaylists, isLoggedIn } from 'selectors';
+import { isLoggedIn } from 'selectors';
 
 const mapStateToProps = state => ({
-  featured: getFeaturedPlaylists(state),
   loggedIn: isLoggedIn(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchFeaturedPlaylists() {
-    dispatch({ type: 'FETCH_FEATURED_PLAYLISTS_REQUEST' });
+  authorize() {
+    dispatch({ type: 'AUTHORIZE' });
   }
 });
 

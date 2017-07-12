@@ -4,7 +4,8 @@ import styled, { css } from 'styled-components';
 const Card = styled.div`
   display: inline-block;
   position: relative;
-  width: 355px;
+  ${'' /* width: 355px; */}
+  width: 320px;
   background-color: white;
   vertical-align: top;
   text-align: left;
@@ -17,11 +18,13 @@ const Card = styled.div`
   transition: all 250ms cubic-bezier(.02, .01, .47, 1);
   color: #4B4F56;
 
-  &:hover {
-    box-shadow: 0 40px 40px rgba(0,0,0,.16);
-    transform: translate(0,-20px);
-    transition-delay: 0s !important;
-  }
+  ${props => !props.disabled && css`
+    &:hover {
+      box-shadow: 0 40px 40px rgba(0,0,0,.16);
+      transform: translate(0,-20px);
+      transition-delay: 0s !important;
+    }
+  `}
 
   ${'' /* TODO: we need nested image for that */}
   ${props => props.artical && css`
@@ -57,7 +60,7 @@ export const CardHero = styled.div`
   width: 100%;
   padding: 20px;
 
-  height: 296px;
+  height: 320px;
 
   @media only screen and (max-width: 500px) {
     padding: 0 20px 20px 20px;

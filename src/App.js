@@ -6,30 +6,21 @@ import Navigation from 'components/Navigation';
 import NavLogo from 'components/NavLogo';
 import NavList from 'components/NavList';
 import NavItem from 'components/NavItem';
-
 import Footer from 'components/Footer';
 
 import useResources from 'connects/resources';
 
-import Repository from 'services/Repository';
 
 import Playlist from './Playlist';
 import Home from './Home';
+import Landing from './Landing';
 
 class App extends Component {
 
-  componentDidMount() {
-    const { loggedIn, fetchFeaturedPlaylists } = this.props;
-
-    if (loggedIn) {
-      fetchFeaturedPlaylists();
-    } else {
-      Repository.authorize();
-    }
-  }
-
   render() {
-    const { match: { url } } = this.props;
+    const { match: { url }, loggedIn } = this.props;
+
+    if (!loggedIn) return <Landing />;
 
     return (
       <div>
@@ -43,8 +34,8 @@ class App extends Component {
           </NavList>
         </Navigation>
         <MainSection>
-          <Route exact path="/" component={Home}/>
-          <Route exact path={`${url}playlists/:id`} component={Playlist}/>
+          <Route exact path={`${url}`} component={Home}/>
+          <Route exact path={`${url}users/:userId/playlists/:playlistId`} component={Playlist}/>
         </MainSection>
         <Footer />
       </div>

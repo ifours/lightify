@@ -1,16 +1,7 @@
 import { createSelector } from 'reselect';
 
-const getResourceEntities = state => state.entities.resources;
-const getResourceList = state => state.resources;
-
-export const getResources = createSelector(
-  getResourceEntities,
-  getResourceList,
-  (resourceEntities, resourceList) => resourceList.map(id => resourceEntities[id])
-);
-
 const getPlaylistEntities = state => state.entities.playlists;
-const getFeatured = state => state.featured;
+export const getFeatured = state => state.featured;
 
 export const getFeaturedPlaylists = createSelector(
   getPlaylistEntities,
@@ -38,3 +29,17 @@ export const getToken = state => state.session.token;
 
 export const getPlaylist = (state, id) => state.entities.playlists[id];
 export const getTracksHrefFromPlaylist = (state, id) => getPlaylist(state, id).tracks.href;
+
+export const getTracksEntities = state => state.entities.tracks;
+
+export const getPlaylistTracks = createSelector(
+  getTracksEntities,
+  getPlaylist,
+  (tracksEntities, playlist) => {
+    if (!playlist) return [];
+
+    const { tracks: { items = [] } } = playlist;
+
+    return items.map(({ track: id }) => tracksEntities[id]);
+  }
+);
