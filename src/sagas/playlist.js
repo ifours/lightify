@@ -10,9 +10,9 @@ function* fetchPlaylist(userId, playlistId) {
   const token = yield select(getToken);
 
   const playlist = yield call(Repository.fetchPlaylist, userId, playlistId, token);
-  const normalizedData = normalize(playlist, playlistSchema);
+  const payload = yield call(normalize, playlist, playlistSchema);
 
-  yield put({ type: 'PERSIST_ENTITY', payload: normalizedData });
+  yield put({ type: 'PERSIST_ENTITY', payload });
 }
 
 function* fetchTracks(playlistId) {
@@ -20,14 +20,13 @@ function* fetchTracks(playlistId) {
   const href = yield select(getTracksHrefFromPlaylist, playlistId);
 
   const { items } = yield call(Repository.fetchPlaylistTracks, href, token);
-  const normalizedData = normalize(items, trackListFromPlaylistSchema);
+  const payload = yield call(normalize, items, trackListFromPlaylistSchema);
 
-  yield put({ type: 'FETCH_TRACKS_SUCCEEDED', payload: { ...normalizedData, playlistId } });
+  yield put({ type: 'FETCH_TRACKS_SUCCEEDED', payload: { ...payload, playlistId } });
 }
 
 export default function* watchFetchPlaylist() {
-  yield takeEvery('FETCH_PLAYLIST_REQUEST', function* fetchRemotePlaylist(action) {
-    const { payload: { userId, playlistId } } = action;
+  yield takeEvery('FETCH_PLAYLIST_REQUEST', function* ({ payload: { userId, playlistId } }) {
     const playlist = yield select(getPlaylist, playlistId);
 
     if (!playlist) {

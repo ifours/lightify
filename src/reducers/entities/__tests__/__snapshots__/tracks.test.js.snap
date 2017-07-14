@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tracks entites reducer should return initialState 1`] = `Object {}`;
+
+exports[`Tracks entites reducer should return new state 1`] = `
+Object {
+  "foo": "new value",
+  "quz": "baz",
+}
+`;
+
+exports[`Tracks entites reducer should return new state if payload has albums entites 1`] = `
+Object {
+  "foo": "bar",
+  "quz": "baz",
+}
+`;
+
+exports[`Tracks entites reducer should return the same state if payload doesn't have albums entites 1`] = `
+Object {
+  "foo": "bar",
+}
+`;

@@ -18,8 +18,7 @@ function* watchRemoteDataRequests() {
       if (error.status === 401) {
         yield put({ type: 'AUTH_TOKEN_EXPIRE' });
         yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify({})]);
-
-        history.push('/');
+        yield apply(history, history.push, '/');
       } else {
         console.error(error);
       }

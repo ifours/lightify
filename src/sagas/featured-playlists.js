@@ -13,8 +13,7 @@ export function* fetchFeaturedPlaylists() {
 
   const token = yield select(getToken);
   const resources = yield call(Repository.getFeaturedPlaylists, token);
-
-  const data = normalize(resources, {
+  const data = yield call(normalize, resources, {
     playlists: { items: playlistListSchema }
   });
 

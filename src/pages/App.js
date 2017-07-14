@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import FaGithub from 'react-icons/lib/fa/github';
@@ -10,6 +10,7 @@ import Navigation from 'components/Navigation';
 import NavLogo from 'components/NavLogo';
 import NavList from 'components/NavList';
 import NavItem from 'components/NavItem';
+import App from 'components/App';
 import Footer from 'components/Footer';
 import { SocialList, SocialLink } from 'components/Social';
 
@@ -25,7 +26,7 @@ export default useSession(({ loggedIn, ...rest }) => {
   if (!loggedIn) return <Landing {...rest}/>;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+    <App>
       <Navigation>
         <NavLogo>Lightify</NavLogo>
         <NavList>
@@ -53,6 +54,6 @@ export default useSession(({ loggedIn, ...rest }) => {
           <SocialLink icon={FaMedium} src="https://medium.com/@ifours">Medium</SocialLink>
         </SocialList>
       </Footer>
-    </div>
+    </App>
   );
 });

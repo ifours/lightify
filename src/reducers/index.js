@@ -4,10 +4,8 @@ import entities from './entities';
 import featured from './featured';
 import session from './session';
 
-const rootReducers = {
+export default combineReducers({
   entities,
   featured,
   session,
-};
-
-export default combineReducers(rootReducers);
+});

@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   accessToken: undefined,
   expiresIn: 0,
   date: 0,

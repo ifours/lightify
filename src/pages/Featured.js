@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from 'components/Header';
-
 import Container from 'components/Container';
-
 import CardList from 'components/CardList';
 import PlaylistCard from 'components/Playlist/Card';
 import Loading from 'components/Loading';
@@ -38,15 +36,13 @@ class Featured extends Component {
   render() {
     const { featured: { message } } = this.props;
 
-    // return <Loading />;
-
     if (!message) return <Loading />;
 
     return (
       <div>
         <Header>
           <Heading>{message}</Heading>
-          <H3>Collection of playlists, tracks, and resources made by makers at Spotify.</H3>
+          <H3>Collection of playlists which helps you discover the perfect music for every moment!</H3>
         </Header>
         <Container>
           <CardList>

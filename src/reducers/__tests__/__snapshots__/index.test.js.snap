@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root reducer should return backbone of the application state 1`] = `
+Object {
+  "entities": Object {
+    "albums": Object {},
+    "playlists": Object {},
+    "tracks": Object {},
+  },
+  "featured": Object {
+    "message": "",
+    "playlists": Object {
+      "items": Array [],
+    },
+  },
+  "session": Object {
+    "accessToken": undefined,
+    "date": 0,
+    "expiresIn": 0,
+  },
+}
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Session reducer should return initial state for AUTH_TOKEN_EXPIRE action 1`] = `
+Object {
+  "accessToken": undefined,
+  "date": 0,
+  "expiresIn": 0,
+}
+`;
+
+exports[`Session reducer should return initialState 1`] = `
+Object {
+  "accessToken": undefined,
+  "date": 0,
+  "expiresIn": 0,
+}
+`;
+
+exports[`Session reducer should return new state for AUTH_TOKEN_RECEIVE action 1`] = `
+Object {
+  "accessToken": "foo",
+  "date": "baz",
+  "expiresIn": "bar",
+}
+`;
