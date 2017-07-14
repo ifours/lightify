@@ -1,9 +1,13 @@
 export default function() {
-  // return JSON.parse(sessionStorage.getItem('state')) || undefined;
-  // return undefined;
-  return {
-    session: {
-      token: sessionStorage.getItem('token')
-    }
-  };
+  const session = JSON.parse(sessionStorage.getItem('session'));
+
+  if (!session) return undefined;
+
+  const { date, expiresIn } = session;
+
+  if (expiresIn + date < Date.now()) {
+    return { session };
+  }
+
+  return undefined;
 }

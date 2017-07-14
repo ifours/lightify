@@ -1,57 +1,36 @@
-import { all, put, takeEvery, call, select } from 'redux-saga/effects';
-import { normalize } from 'normalizr';
-
-import Repository from 'services/Repository';
-import { trackListFromPlaylistSchema, playlistSchema } from 'schemas';
-
-import { getTracksHrefFromPlaylist, getToken, getPlaylist } from 'selectors';
+import { all, put, apply } from 'redux-saga/effects';
 
 import watchFetchFeaturedPlaylists from './featured-playlists';
+import watchFetchPlaylist from './playlist';
+import watchAuthorize from './authorize';
 
-function* authorize() {
-  yield put({ type: 'AUTHORIZE_REQUEST', payload: {} });
-  yield call(Repository.authorize);
-}
+import history from '../history';
 
-function* watchAuthorize() {
-  yield takeEvery('AUTHORIZE', authorize);
-}
+// entry point to start Sagas for remote data
+function* watchRemoteDataRequests() {
+  while (true) {
+    try {
+      yield all([
+        watchFetchFeaturedPlaylists(),
+        watchFetchPlaylist(),
+      ]);
+    } catch(error) {
+      if (error.status === 401) {
+        yield put({ type: 'AUTH_TOKEN_EXPIRE' });
+        yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify({})]);
 
-function* fetchPlaylist(userId, playlistId) {
-  const token = yield select(getToken);
-
-  const playlist = yield call(Repository.fetchPlaylist, userId, playlistId, token);
-  const normalizedData = normalize(playlist, playlistSchema);
-
-  yield put({ type: 'PERSIST_ENTITY', payload: normalizedData });
-}
-
-function* fetchPlaylistTracks(action) {
-  const { payload: { userId, playlistId } } = action;
-
-  const token = yield select(getToken);
-  const playlist = yield select(getPlaylist);
-
-  if (!playlist) {
-    yield call(fetchPlaylist, userId, playlistId);
-  } else {
-    const href = yield select(getTracksHrefFromPlaylist, playlistId);
-    const { items } = yield call(Repository.fetchPlaylistTracks, href, token);
-    const normalizedData = normalize(items, trackListFromPlaylistSchema);
-
-    yield put({ type: 'FETCH_TRACKS_SUCCEEDED', payload: { ...normalizedData, playlistId } });
+        history.push('/');
+      } else {
+        console.error(error);
+      }
+    }
   }
-}
-
-function* watchFetchPlaylistTracks() {
-  yield takeEvery('FETCH_PLAYLIST_REQUEST', fetchPlaylistTracks);
 }
 
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
   yield all([
-    watchFetchFeaturedPlaylists(),
     watchAuthorize(),
-    watchFetchPlaylistTracks(),
-  ])
+    watchRemoteDataRequests(),
+  ]);
 }

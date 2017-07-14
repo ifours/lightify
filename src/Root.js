@@ -1,8 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll';
 
+import history from './history';
 import store from './store';
 import App from './App';
 import Callback from './Callback';
@@ -11,14 +12,14 @@ export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
           <ScrollContext>
-            <div>
-              <Route path="/" component={App} />
+            <Switch>
               <Route exact path="/callback" component={Callback}/>
-            </div>
+              <Route path="/" component={App} />
+            </Switch>
           </ScrollContext>
-        </BrowserRouter>
+        </Router>
       </Provider>
     );
   }

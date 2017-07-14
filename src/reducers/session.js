@@ -1,5 +1,7 @@
 const initialState = {
-  token: undefined,
+  accessToken: undefined,
+  expiresIn: 0,
+  date: 0,
 };
 
 export default (state = initialState, action) => {
@@ -7,7 +9,9 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case 'AUTH_TOKEN_RECEIVE':
-      return { ...state, token: payload };
+      return payload;
+    case 'AUTH_TOKEN_EXPIRE':
+      return initialState;
     default:
       return state;
   }

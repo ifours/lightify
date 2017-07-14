@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
+
+import FaGithub from 'react-icons/lib/fa/github';
+import FaTwitter from 'react-icons/lib/fa/twitter';
+import FaMedium from 'react-icons/lib/fa/medium';
 
 import MainSection from 'components/MainSection';
 import Navigation from 'components/Navigation';
@@ -7,40 +11,48 @@ import NavLogo from 'components/NavLogo';
 import NavList from 'components/NavList';
 import NavItem from 'components/NavItem';
 import Footer from 'components/Footer';
+import { SocialList, SocialLink } from 'components/Social';
 
-import useResources from 'connects/resources';
-
+import useSession from 'connects/session';
 
 import Playlist from './Playlist';
-import Home from './Home';
+import Featured from './Featured';
 import Landing from './Landing';
+import NoMatch from './NoMatch';
+import Fake from './Fake';
 
-class App extends Component {
+export default useSession(({ loggedIn, ...rest }) => {
+  if (!loggedIn) return <Landing {...rest}/>;
 
-  render() {
-    const { match: { url }, loggedIn } = this.props;
-
-    if (!loggedIn) return <Landing />;
-
-    return (
-      <div>
-        <Navigation>
-          <NavLogo>Lightify</NavLogo>
-          <NavList>
-            <NavItem>Featured</NavItem>
-            <NavItem>Genres & Moods</NavItem>
-            <NavItem>New Releases</NavItem>
-            <NavItem>Discover</NavItem>
-          </NavList>
-        </Navigation>
-        <MainSection>
-          <Route exact path={`${url}`} component={Home}/>
-          <Route exact path={`${url}users/:userId/playlists/:playlistId`} component={Playlist}/>
-        </MainSection>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default useResources(App);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+      <Navigation>
+        <NavLogo>Lightify</NavLogo>
+        <NavList>
+          <Link to="/featured"><NavItem>Featured</NavItem></Link>
+          <Link to="/genres"><NavItem>Genres & Moods</NavItem></Link>
+          <Link to="/releases"><NavItem>New Releases</NavItem></Link>
+          <Link to="/discover"><NavItem>Discover</NavItem></Link>
+        </NavList>
+      </Navigation>
+      <MainSection>
+        <Switch>
+          <Route path="/" exact component={Featured}/>
+          <Route path="/featured" component={Featured}/>
+          <Route path="/genres" component={Fake}/>
+          <Route path="/releases" component={Fake}/>
+          <Route path="/discover" component={Fake}/>
+          <Route path={`/users/:userId/playlists/:playlistId`} component={Playlist}/>
+          <Route component={NoMatch} />
+        </Switch>
+      </MainSection>
+      <Footer>
+        <SocialList>
+          <SocialLink icon={FaGithub} src="https://github.com/IFours">Github</SocialLink>
+          <SocialLink icon={FaTwitter} src="https://twitter.com/_ifours_">Twitter</SocialLink>
+          <SocialLink icon={FaMedium} src="https://medium.com/@ifours">Medium</SocialLink>
+        </SocialList>
+      </Footer>
+    </div>
+  );
+});

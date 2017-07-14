@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Footer = styled.footer`
-  max-width: 1185px;
+  ${'' /* max-width: 1185px;
   width: 100%;
   margin: 110px auto 110px auto;
   padding: 0 20px;
@@ -14,7 +14,7 @@ const Footer = styled.footer`
   }
   @media only screen and (max-width: 500px) {
     max-width: 320px;
-  }
+  } */}
 `;
 
 export default Footer;

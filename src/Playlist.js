@@ -5,7 +5,9 @@ import { Text } from 'components/Typography';
 
 import Container from 'components/Playlist/Container';
 import TrackItem from 'components/Playlist/TrackItem';
+import TrackList from 'components/Playlist/TrackList';
 import PlaylistCard from 'components/Playlist/Card';
+import Loading from 'components/Loading';
 import usePlaylist from 'connects/playlist';
 
 function trackDuration(millis) {
@@ -20,13 +22,21 @@ export class Playlist extends Component {
     this.props.fetchPlaylist();
   }
 
+  componentWillUnmount() {
+    this.pauseAudio();
+  }
+
   onTrackClick = (url) => {
-    if (this.audio) {
-      this.audio.pause();
-    }
+    this.pauseAudio();
 
     this.audio = new Audio(url);
     this.audio.play();
+  }
+
+  pauseAudio() {
+    if (this.audio) {
+      this.audio.pause();
+    }
   }
 
   renderTrack(track, index) {
@@ -45,14 +55,14 @@ export class Playlist extends Component {
   render() {
     const { playlist, tracks } = this.props;
 
-    if (!playlist) return null;
+    if (!playlist) return <Loading />;
 
     return (
       <Container>
         <PlaylistCard playlist={playlist} disabled />
-        <ul style={{ paddingTop: 20, paddingRight: 20, flex: 1 }}>
-          {tracks.length !== 0 && tracks.map(this.renderTrack, this)}
-        </ul>
+        <TrackList>
+          {tracks.length !== 0 ? tracks.map(this.renderTrack, this) : <Loading />}
+        </TrackList>
       </Container>
     );
   }

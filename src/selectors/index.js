@@ -24,8 +24,8 @@ export const getNewReleases = createSelector(
   (albumsEntities, releases) => releases.items.map(id => albumsEntities[id])
 );
 
-export const isLoggedIn = state => !!state.session.token;
-export const getToken = state => state.session.token;
+export const isLoggedIn = state => !!state.session.accessToken;
+export const getToken = state => state.session.accessToken;
 
 export const getPlaylist = (state, id) => state.entities.playlists[id];
 export const getTracksHrefFromPlaylist = (state, id) => getPlaylist(state, id).tracks.href;

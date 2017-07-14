@@ -6,6 +6,10 @@ import Root from './Root';
 // import registerServiceWorker from './registerServiceWorker';
 
 injectGlobal`
+  body, html {
+    height: 100%
+  }
+
   body {
     background-color: #FCFCFC;
 
@@ -16,9 +20,14 @@ injectGlobal`
       '.SFNSText-Regular',
       Roboto,
       'Helvetica Neue',
-      Helvetica, Arial,
+      Helvetica,
+      Arial,
       sans-serif;
     font-size: 16px;
+  }
+
+  #root {
+    height: 100%;
   }
 
   * {
@@ -30,8 +39,6 @@ injectGlobal`
     -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    transition: opacity 0.2s ease;
   }
 `;
 

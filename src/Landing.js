@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import { Container, Button, Brand, Intro } from 'components/Landing';
 import { Heading } from 'components/Typography';
 
-import useSession from 'connects/session';
-
-export class Landing extends Component {
+export default class Landing extends Component {
 
   onClick = () => {
     this.props.authorize();
@@ -22,5 +20,3 @@ export class Landing extends Component {
     )
   }
 }
-
-export default useSession(Landing);

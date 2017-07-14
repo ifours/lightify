@@ -6,17 +6,17 @@ const ContainerOuterView = styled.div`
   background: linear-gradient(145deg, #ffc867, #f037a6);
 `;
 
+// #ECE9E6, #FFFFFF)
+// abbaab
 export const ContainerInnerView = styled.div`
   height: 100vh;
   width: 100vw;
+
   display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-direction: column;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   padding: 1.25rem 2.5vw;
 
   text-align: center;
