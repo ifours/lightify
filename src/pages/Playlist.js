@@ -31,6 +31,7 @@ export class Playlist extends Component {
   pauseAudio() {
     if (this.audio) {
       this.audio.pause();
+      this.audio = null;
     }
   }
 

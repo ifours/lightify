@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const App = styled.div`
+const App = styled.main`
   display: flex;
   flex-direction: column;
   min-height: 100%;

@@ -1,6 +1,6 @@
-const CLIENT_ID = '82b3d439439646e9bc4a7ad7de9aac9f';
-const REDIRECT_URI = encodeURIComponent('http://localhost:3000/callback');
-const SCOPE = encodeURIComponent('user-read-private user-read-email');
+const CLIENT_ID = process.env.REACT_APP_SPOTIFY_ID;
+const REDIRECT_URI = encodeURIComponent(process.env.REACT_APP_CALLBACK_URL);
+const SCOPE = encodeURIComponent('');
 const RESPONSE_TYPE = 'token';
 
 const fetch = async (url, token, options = {}) => {

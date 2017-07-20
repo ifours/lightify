@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import FaGithub from 'react-icons/lib/fa/github';
 import FaTwitter from 'react-icons/lib/fa/twitter';
 import FaMedium from 'react-icons/lib/fa/medium';
 
-import App from 'components/App';
+import Main from 'components/Main';
 import Footer from 'components/Footer';
 import MainSection from 'components/MainSection';
-import { NavigationBar, NavigationLogo, NavigationList, NavigationItem } from 'components/Navigation';
+import { NavigationBar, NavigationList, NavigationItem } from 'components/Navigation';
 import { SocialList, SocialLink } from 'components/Social';
 
 import useSession from 'connects/session';
@@ -23,7 +23,7 @@ export default useSession(({ loggedIn, ...rest }) => {
   if (!loggedIn) return <Landing {...rest}/>;
 
   return (
-    <App>
+    <Main>
       <NavigationBar>
         <NavigationList>
           <NavigationItem to="/featured">Featured</NavigationItem>
@@ -50,6 +50,6 @@ export default useSession(({ loggedIn, ...rest }) => {
           <SocialLink icon={FaMedium} src="https://medium.com/@ifours">Medium</SocialLink>
         </SocialList>
       </Footer>
-    </App>
+    </Main>
   );
 });
