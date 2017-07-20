@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from 'components/Header';
-import Container from 'components/Container';
+import Container, { Intro } from 'components/Container';
 import CardList from 'components/CardList';
 import PlaylistCard from 'components/Playlist/Card';
 import Loading from 'components/Loading';
 import { Heading } from 'components/Typography';
-import { H3 } from 'components/Primitives';
 
 import useFeatured from 'connects/featured';
 
@@ -42,7 +41,7 @@ class Featured extends Component {
       <div>
         <Header>
           <Heading>{message}</Heading>
-          <H3>Collection of playlists which helps you discover the perfect music for every moment!</H3>
+          <Intro>Collection of playlists which helps you discover the perfect music for every moment!</Intro>
         </Header>
         <Container>
           <CardList>

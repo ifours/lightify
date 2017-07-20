@@ -8,10 +8,12 @@ export function* authorize() {
   yield call(Repository.authorize);
 }
 
-export function* session() {
+export function* tokenReceive() {
   const { payload } = yield take('AUTH_TOKEN_RECEIVE');
   yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify(payload)]);
+}
 
+export function* tokenExpire() {
   yield take('AUTH_TOKEN_EXPIRE');
   yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify({})]);
   yield apply(history, history.push, ['/']);
@@ -19,7 +21,8 @@ export function* session() {
 
 export default function* watchSession() {
   yield all([
-    session(),
     authorize(),
+    tokenExpire(),
+    tokenReceive(),
   ])
 }

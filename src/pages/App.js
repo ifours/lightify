@@ -25,7 +25,6 @@ export default useSession(({ loggedIn, ...rest }) => {
   return (
     <App>
       <NavigationBar>
-        <NavigationLogo>Lightify</NavigationLogo>
         <NavigationList>
           <NavigationItem to="/featured">Featured</NavigationItem>
           <NavigationItem to="/genres">Genres & Moods</NavigationItem>

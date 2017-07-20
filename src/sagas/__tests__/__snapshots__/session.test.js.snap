@@ -20,30 +20,7 @@ Object {
 }
 `;
 
-exports[`Session saga should run session 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "TAKE": Object {
-    "pattern": "AUTH_TOKEN_RECEIVE",
-  },
-}
-`;
-
-exports[`Session saga should run session 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "CALL": Object {
-    "args": Array [
-      "session",
-      "{\\"foo\\":\\"bar\\"}",
-    ],
-    "context": [Function],
-    "fn": [Function],
-  },
-}
-`;
-
-exports[`Session saga should run session 3`] = `
+exports[`Session saga should run tokenExpire 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "TAKE": Object {
@@ -52,7 +29,7 @@ Object {
 }
 `;
 
-exports[`Session saga should run session 4`] = `
+exports[`Session saga should run tokenExpire 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
@@ -66,7 +43,7 @@ Object {
 }
 `;
 
-exports[`Session saga should run session 5`] = `
+exports[`Session saga should run tokenExpire 3`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
@@ -96,10 +73,34 @@ Object {
 }
 `;
 
+exports[`Session saga should run tokenReceive 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "TAKE": Object {
+    "pattern": "AUTH_TOKEN_RECEIVE",
+  },
+}
+`;
+
+exports[`Session saga should run tokenReceive 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "session",
+      "{\\"foo\\":\\"bar\\"}",
+    ],
+    "context": [Function],
+    "fn": [Function],
+  },
+}
+`;
+
 exports[`Session saga should run watcher 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "ALL": Array [
+     {},
      {},
      {},
   ],

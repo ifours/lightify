@@ -3,7 +3,7 @@ import { call, take, apply } from 'redux-saga/effects';
 import Repository from 'services/Repository';
 import history from '../../history';
 
-import watcher, { authorize, session } from '../session';
+import watcher, { authorize, tokenReceive, tokenExpire } from '../session';
 
 beforeEach(() => {
   global.sessionStorage = jest.fn();
@@ -25,9 +25,9 @@ describe('Session saga', () => {
     expect(next.value).toEqual(call(Repository.authorize));
   });
 
-  it('should run session', () => {
+  it('should run tokenReceive', () => {
     let next = {};
-    const gen = session();
+    const gen = tokenReceive();
 
     next = gen.next();
     expect(next.value).toMatchSnapshot();
@@ -39,6 +39,11 @@ describe('Session saga', () => {
     next = gen.next(action);
     expect(next.value).toMatchSnapshot();
     expect(next.value).toEqual(apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify(payload)]));
+  });
+
+  it('should run tokenExpire', () => {
+    let next = {};
+    const gen = tokenExpire();
 
     next = gen.next();
     expect(next.value).toMatchSnapshot();

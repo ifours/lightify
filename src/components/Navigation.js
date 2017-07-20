@@ -23,11 +23,10 @@ export const NavigationBar = styled.nav`
 
 export const NavigationList = styled.ul`
   display: inline-block;
-  float: right;
+  min-width: 450px;
 
   @media only screen and (max-width: 500px) {
     display: inline-block;
-    float: left;
     position: fixed;
     left: 59px;
   }
@@ -62,7 +61,7 @@ export const NavigationItem = ({ to, children }) => (
   </Link>
 )
 
-export const NavigationLogo = styled.div`
+const NavigationLogoView = styled.div`
   background-image: url(${process.env.PUBLIC_URL}/spotify.svg);
   background-size: 30px 30px;
   background-repeat: no-repeat;
@@ -80,3 +79,9 @@ export const NavigationLogo = styled.div`
     display: none;
   }
 `;
+
+export const NavigationLogo = ({ children }) => (
+  <Link to="/">
+    <NavigationLogoView>{children}</NavigationLogoView>
+  </Link>
+);

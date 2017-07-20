@@ -6,7 +6,7 @@ import { trackListFromPlaylistSchema, playlistSchema } from 'schemas';
 
 import { getTracksHrefFromPlaylist, getToken, getPlaylist } from 'selectors';
 
-function* fetchPlaylist(userId, playlistId) {
+export function* fetchPlaylist(userId, playlistId) {
   const token = yield select(getToken);
 
   const playlist = yield call(Repository.fetchPlaylist, userId, playlistId, token);
@@ -15,7 +15,7 @@ function* fetchPlaylist(userId, playlistId) {
   yield put({ type: 'PERSIST_ENTITY', payload });
 }
 
-function* fetchTracks(playlistId) {
+export function* fetchTracks(playlistId) {
   const token = yield select(getToken);
   const href = yield select(getTracksHrefFromPlaylist, playlistId);
 
