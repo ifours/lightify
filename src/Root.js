@@ -5,6 +5,7 @@ import { ScrollContext } from 'react-router-scroll';
 
 import App from 'pages/App';
 import Callback from 'pages/Callback';
+import Landing from 'pages/Landing';
 
 import history from './history';
 import store from './store';
@@ -15,6 +16,7 @@ export default () => (
       <ScrollContext>
         <Switch>
           <Route exact path="/callback" component={Callback}/>
+          <Route exact path="/landing" component={Landing}/>
           <Route path="/" component={App} />
         </Switch>
       </ScrollContext>

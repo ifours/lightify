@@ -2,31 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContainerOuterView = styled.div`
-  overflow: hidden;
-  background: linear-gradient(145deg, #ffc867, #f037a6);
+  height: 100%;
+
+  @media (min-width: 50em) {
+    background-image: url(${process.env.PUBLIC_URL}/landing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left center;
+  }
 `;
 
-// #ECE9E6, #FFFFFF)
-// abbaab
 export const ContainerInnerView = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  padding: 25px 30px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 1.25rem 2.5vw;
-
   text-align: center;
 
-  @media (min-width: 50em) {
-    background-image: url(${process.env.PUBLIC_URL}/landing-graphic.png);;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left center;
-  }
+  background: linear-gradient(145deg, rgba(252,252,252,0.8), rgba(252,252,252,1));
 `;
 
 export const Container = ({ children }) => (
@@ -36,15 +32,6 @@ export const Container = ({ children }) => (
     </ContainerInnerView>
   </ContainerOuterView>
 );
-
-export const Brand = styled.h3`
-  font-weight: 500;
-  font-size: 1.125rem;
-  color: #1e3264;
-  margin: 0 0 -.625rem;
-  letter-spacing: .0625rem;
-  font-size: 1.75rem;
-`;
 
 export const Button = styled.button`
   border-width: 0;
@@ -69,14 +56,11 @@ export const Intro = styled.h3`
 
   font-weight: 400;
   font-size: 16px;
-  margin-top: -.3125rem;
   padding-bottom: 40px;
   line-height: 24px;
 
   font-style: normal;
   max-width: 90%;
   text-align: center;
-  color: #1e3264;
+  color: #90949C;
 `;
-
-export default Container;

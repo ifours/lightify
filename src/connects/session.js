@@ -8,7 +8,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   authorize() {
-    dispatch({ type: 'AUTHORIZE' });
+    dispatch({ type: 'AUTHORIZE_REQUEST' });
+  },
+
+  persistToken(payload) {
+    dispatch({ type: 'AUTH_TOKEN_RECEIVE', payload });
   }
 });
 

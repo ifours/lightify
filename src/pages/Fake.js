@@ -7,8 +7,8 @@ export class Fake extends Component {
   render() {
     return (
       <Container>
-        <Heading color="#90949C" weight="700" >This page is not ready</Heading>
-        <Intro>You can follow me, to stay updated when new pages are available 😉</Intro>
+        <Heading light bold>This page is not ready</Heading>
+        <Intro>You can follow me, to stay updated when new pages are available <span role="img" aria-label="wink">😉</span></Intro>
       </Container>
     )
   }

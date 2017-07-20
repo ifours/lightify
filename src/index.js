@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { injectGlobal } from 'styled-components';
 
 import Root from './Root';
-// import registerServiceWorker from './registerServiceWorker';
 
 injectGlobal`
   body, html {
@@ -43,4 +42,3 @@ injectGlobal`
 `;
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-// registerServiceWorker();

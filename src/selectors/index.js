@@ -15,15 +15,6 @@ export const getFeaturedPlaylists = createSelector(
   })
 );
 
-const getAlbumEntities = state => state.entities.albums;
-const getReleases = state => state.releases;
-
-export const getNewReleases = createSelector(
-  getAlbumEntities,
-  getReleases,
-  (albumsEntities, releases) => releases.items.map(id => albumsEntities[id])
-);
-
 export const isLoggedIn = state => !!state.session.accessToken;
 export const getToken = state => state.session.accessToken;
 

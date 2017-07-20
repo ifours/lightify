@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Container = styled.div`
   max-width: 1185px;
   margin: 0 auto;
-  min-height: 80vh;
 
   @media only screen and (max-width: 1225px) {
   	max-width: 790px;

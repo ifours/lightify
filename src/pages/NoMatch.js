@@ -5,7 +5,7 @@ import { Heading } from 'components/Typography';
 
 export const NoMatch = () => (
   <Container>
-    <Heading color="#90949C" weight="700" >Whoops</Heading>
+    <Heading light bold>Whoops</Heading>
     <Intro>We couldn’t find the page you were looking for.</Intro>
   </Container>
 );

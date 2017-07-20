@@ -1,10 +1,8 @@
-import { all, put, apply } from 'redux-saga/effects';
+import { all, put } from 'redux-saga/effects';
 
 import watchFetchFeaturedPlaylists from './featured-playlists';
 import watchFetchPlaylist from './playlist';
-import watchAuthorize from './authorize';
-
-import history from '../history';
+import watchSession from './session';
 
 // entry point to start Sagas for remote data
 function* watchRemoteDataRequests() {
@@ -17,8 +15,6 @@ function* watchRemoteDataRequests() {
     } catch(error) {
       if (error.status === 401) {
         yield put({ type: 'AUTH_TOKEN_EXPIRE' });
-        yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify({})]);
-        yield apply(history, history.push, '/');
       } else {
         console.error(error);
       }
@@ -29,7 +25,7 @@ function* watchRemoteDataRequests() {
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
   yield all([
-    watchAuthorize(),
+    watchSession(),
     watchRemoteDataRequests(),
   ]);
 }

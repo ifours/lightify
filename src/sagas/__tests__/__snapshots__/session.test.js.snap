@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Session saga should run authorize 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "TAKE": Object {
+    "pattern": "AUTHORIZE_REQUEST",
+  },
+}
+`;
+
+exports[`Session saga should run authorize 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Session saga should run session 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "TAKE": Object {
+    "pattern": "AUTH_TOKEN_RECEIVE",
+  },
+}
+`;
+
+exports[`Session saga should run session 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "session",
+      "{\\"foo\\":\\"bar\\"}",
+    ],
+    "context": [Function],
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Session saga should run session 3`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "TAKE": Object {
+    "pattern": "AUTH_TOKEN_EXPIRE",
+  },
+}
+`;
+
+exports[`Session saga should run session 4`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "session",
+      "{}",
+    ],
+    "context": [Function],
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Session saga should run session 5`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/",
+    ],
+    "context": Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    },
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`Session saga should run watcher 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "ALL": Array [
+     {},
+     {},
+  ],
+}
+`;

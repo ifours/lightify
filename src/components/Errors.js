@@ -19,5 +19,3 @@ export const Intro = styled.h3`
 
   color: #90949C;
 `;
-
-export default Container;

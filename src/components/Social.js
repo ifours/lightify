@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { textColor } from 'styles';
-
 export const SocialList = styled.ul`
   margin: 30px auto;
   text-align: center;
@@ -11,7 +9,7 @@ export const SocialList = styled.ul`
 export const SocialLinkContainer = styled.a.attrs({
   href: props => props.src
 })`
-  color: ${textColor};
+  color: #90949C;
   text-decoration: none;
   display: inline-block;
   margin-right: 32px;
@@ -25,7 +23,7 @@ export const SocialLinkContainer = styled.a.attrs({
 
 export const SocialLink = ({ children, icon: Icon, src }) => (
   <SocialLinkContainer src={src}>
-    <Icon  color={textColor} style={{ marginTop: -3, marginRight: 5 }} />
+    <Icon color="#90949C" style={{ marginTop: -3, marginRight: 5 }} />
     {children}
   </SocialLinkContainer>
 );

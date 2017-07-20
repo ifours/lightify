@@ -1,17 +1,14 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import FaGithub from 'react-icons/lib/fa/github';
 import FaTwitter from 'react-icons/lib/fa/twitter';
 import FaMedium from 'react-icons/lib/fa/medium';
 
-import MainSection from 'components/MainSection';
-import Navigation from 'components/Navigation';
-import NavLogo from 'components/NavLogo';
-import NavList from 'components/NavList';
-import NavItem from 'components/NavItem';
 import App from 'components/App';
 import Footer from 'components/Footer';
+import MainSection from 'components/MainSection';
+import { NavigationBar, NavigationLogo, NavigationList, NavigationItem } from 'components/Navigation';
 import { SocialList, SocialLink } from 'components/Social';
 
 import useSession from 'connects/session';
@@ -27,15 +24,15 @@ export default useSession(({ loggedIn, ...rest }) => {
 
   return (
     <App>
-      <Navigation>
-        <NavLogo>Lightify</NavLogo>
-        <NavList>
-          <Link to="/featured"><NavItem>Featured</NavItem></Link>
-          <Link to="/genres"><NavItem>Genres & Moods</NavItem></Link>
-          <Link to="/releases"><NavItem>New Releases</NavItem></Link>
-          <Link to="/discover"><NavItem>Discover</NavItem></Link>
-        </NavList>
-      </Navigation>
+      <NavigationBar>
+        <NavigationLogo>Lightify</NavigationLogo>
+        <NavigationList>
+          <NavigationItem to="/featured">Featured</NavigationItem>
+          <NavigationItem to="/genres">Genres & Moods</NavigationItem>
+          <NavigationItem to="/releases">New Releases</NavigationItem>
+          <NavigationItem to="/discover">Discover</NavigationItem>
+        </NavigationList>
+      </NavigationBar>
       <MainSection>
         <Switch>
           <Route path="/" exact component={Featured}/>

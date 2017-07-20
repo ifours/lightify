@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container, Button, Brand, Intro } from 'components/Landing';
+import { Container, Button, Intro } from 'components/Landing';
 import { Heading } from 'components/Typography';
 
 export default class Landing extends Component {
@@ -12,8 +12,7 @@ export default class Landing extends Component {
   render() {
     return (
       <Container>
-        <Brand>Lightify</Brand>
-        <Heading color="#1e3264" weight="700" >New experience for your lovely Spotify</Heading>
+        <Heading light bold >New experience for your lovely Spotify</Heading>
         <Intro>This demo explores the possibilities with the Web API. To view this demo you need to sign in with your spotify account.</Intro>
         <Button onClick={this.onClick}>Get Started</Button>
       </Container>
