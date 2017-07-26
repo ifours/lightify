@@ -1,6 +1,6 @@
 import { all, put, apply } from 'redux-saga/effects';
 
-import watchFetchFeaturedPlaylists from './featured-playlists';
+import watchFetchFeaturedPlaylist from './featured';
 import watchFetchPlaylist from './playlist';
 import watchSession from './session';
 
@@ -10,7 +10,7 @@ function* watchRemoteDataRequests() {
   while (true) {
     try {
       yield all([
-        watchFetchFeaturedPlaylists(),
+        watchFetchFeaturedPlaylist(),
         watchFetchPlaylist(),
       ]);
     } catch(error) {

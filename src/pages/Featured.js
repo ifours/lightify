@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from 'components/Header';
 import Container, { Intro } from 'components/Container';
 import CardList from 'components/CardList';
-import PlaylistCard from 'components/Playlist/Card';
+import { PlaylistCard } from 'components/Playlist';
 import Loading from 'components/Loading';
 import { Heading } from 'components/Typography';
 
