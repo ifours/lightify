@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Entities root reducer should return backbone of stities state 1`] = `
-Object {
-  "albums": Object {},
-  "playlists": Object {},
-  "tracks": Object {},
-}
-`;
