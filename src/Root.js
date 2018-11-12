@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import { ScrollContext } from 'react-router-scroll';
 
 import App from 'pages/App';
@@ -12,7 +12,7 @@ export default () => (
   <Provider store={store}>
     <Router history={history}>
       <ScrollContext>
-        <App />
+        <Route path="/" component={App}/>
       </ScrollContext>
     </Router>
   </Provider>
