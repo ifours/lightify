@@ -15,12 +15,11 @@ import useSession from 'connects/session';
 
 import Playlist from './Playlist';
 import Featured from './Featured';
-import Landing from './Landing';
 import NoMatch from './NoMatch';
 import Fake from './Fake';
 
 export default useSession(({ loggedIn, ...rest }) => {
-  if (!loggedIn) return <Landing {...rest}/>;
+  if (!loggedIn) return null;
 
   return (
     <Main>
@@ -39,7 +38,7 @@ export default useSession(({ loggedIn, ...rest }) => {
           <Route path="/genres" component={Fake}/>
           <Route path="/releases" component={Fake}/>
           <Route path="/discover" component={Fake}/>
-          <Route path={`/users/:userId/playlists/:playlistId`} component={Playlist}/>
+          <Route path="/users/:userId/playlists/:playlistId" component={Playlist}/>
           <Route component={NoMatch} />
         </Switch>
       </MainSection>

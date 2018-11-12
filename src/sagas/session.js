@@ -1,16 +1,41 @@
-import { take, call, all, apply } from 'redux-saga/effects';
+import { take, call, apply, put, select } from 'redux-saga/effects';
+import qs from 'qs';
 
 import Repository from 'services/Repository';
+import { isLoggedIn } from 'selectors';
+
 import history from '../history';
 
 export function* authorize() {
-  yield take('AUTHORIZE_REQUEST');
-  yield call(Repository.authorize);
-}
+  const loggedIn = yield select(isLoggedIn);
 
-export function* tokenReceive() {
-  const { payload } = yield take('AUTH_TOKEN_RECEIVE');
-  yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify(payload)]);
+  if (loggedIn) return yield;
+
+  const { location: { hash, search } } = history;
+  const { error } = qs.parse(search, { ignoreQueryPrefix: true });
+  const { access_token: accessToken, expires_in: expiresIn } = qs.parse(hash.replace('#', ''));
+
+  if (error) return yield;
+
+  if (accessToken && expiresIn) {
+    const payload = {
+      accessToken,
+      date: Date.now(),
+      expiresIn: parseInt(expiresIn, 10)
+    };
+
+    yield put({
+      type: 'AUTH_TOKEN_RECEIVE',
+      payload
+    });
+
+    yield apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify(payload)]);
+    yield apply(history, history.replace, ['/']);
+
+    return yield;
+  }
+
+  yield call(Repository.authorize);
 }
 
 export function* tokenExpire() {
@@ -20,9 +45,8 @@ export function* tokenExpire() {
 }
 
 export default function* watchSession() {
-  yield all([
-    authorize(),
-    tokenExpire(),
-    tokenReceive(),
-  ])
+  while(true) {
+    yield call(authorize);
+    yield call(tokenExpire);
+  }
 }

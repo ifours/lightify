@@ -2,6 +2,7 @@
   "name": "facebook-design",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ifours.github.io/lightify/",
   "dependencies": {
     "history": "^4.6.3",
     "normalizr": "^3.2.3",
@@ -19,6 +20,7 @@
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "jest-styled-components": "^4.0.3",
     "mock-local-storage": "^1.0.3",
     "react-scripts": "1.0.10",
@@ -28,6 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   }
 }

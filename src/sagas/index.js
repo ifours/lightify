@@ -1,8 +1,8 @@
-import { all, put, apply } from 'redux-saga/effects';
+import { all, put, apply, fork, call } from 'redux-saga/effects';
 
 import watchFetchFeaturedPlaylist from './featured';
 import watchFetchPlaylist from './playlist';
-import watchSession from './session';
+import sessionSaga from './session';
 
 import history from '../history';
 
@@ -28,8 +28,7 @@ function* watchRemoteDataRequests() {
 }
 
 export default function* rootSaga() {
-  yield all([
-    watchSession(),
-    watchRemoteDataRequests(),
-  ]);
+  yield fork(sessionSaga);
+
+  yield call(watchRemoteDataRequests);
 }
