@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Session saga should run authorize 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "TAKE": Object {
-    "pattern": "AUTHORIZE_REQUEST",
-  },
-}
-`;
-
-exports[`Session saga should run authorize 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "CALL": Object {
-    "args": Array [],
-    "context": null,
-    "fn": [Function],
-  },
-}
-`;
-
 exports[`Session saga should run tokenExpire 1`] = `
 Object {
   "@@redux-saga/IO": true,
@@ -70,39 +50,5 @@ Object {
     },
     "fn": [Function],
   },
-}
-`;
-
-exports[`Session saga should run tokenReceive 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "TAKE": Object {
-    "pattern": "AUTH_TOKEN_RECEIVE",
-  },
-}
-`;
-
-exports[`Session saga should run tokenReceive 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "CALL": Object {
-    "args": Array [
-      "session",
-      "{\\"foo\\":\\"bar\\"}",
-    ],
-    "context": [Function],
-    "fn": [Function],
-  },
-}
-`;
-
-exports[`Session saga should run watcher 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "ALL": Array [
-     {},
-     {},
-     {},
-  ],
 }
 `;

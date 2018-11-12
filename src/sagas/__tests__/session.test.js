@@ -1,9 +1,8 @@
-import { call, take, apply } from 'redux-saga/effects';
+import { take, apply } from 'redux-saga/effects';
 
-import Repository from 'services/Repository';
 import history from '../../history';
 
-import watcher, { authorize, tokenReceive, tokenExpire } from '../session';
+import { tokenExpire } from '../session';
 
 beforeEach(() => {
   global.sessionStorage = jest.fn();
@@ -12,35 +11,6 @@ beforeEach(() => {
 });
 
 describe('Session saga', () => {
-  it('should run authorize', () => {
-    let next = {};
-    const gen = authorize();
-
-    next = gen.next();
-    expect(next.value).toMatchSnapshot();
-    expect(next.value).toEqual(take('AUTHORIZE_REQUEST'));
-
-    next = gen.next();
-    expect(next.value).toMatchSnapshot();
-    expect(next.value).toEqual(call(Repository.authorize));
-  });
-
-  it('should run tokenReceive', () => {
-    let next = {};
-    const gen = tokenReceive();
-
-    next = gen.next();
-    expect(next.value).toMatchSnapshot();
-    expect(next.value).toEqual(take('AUTH_TOKEN_RECEIVE'));
-
-    const payload = { foo: 'bar' };
-    const action = { payload };
-
-    next = gen.next(action);
-    expect(next.value).toMatchSnapshot();
-    expect(next.value).toEqual(apply(sessionStorage, sessionStorage.setItem, ['session', JSON.stringify(payload)]));
-  });
-
   it('should run tokenExpire', () => {
     let next = {};
     const gen = tokenExpire();
@@ -56,13 +26,5 @@ describe('Session saga', () => {
     next = gen.next();
     expect(next.value).toMatchSnapshot();
     expect(next.value).toEqual(apply(history, history.push, ['/']));
-  });
-
-  it('should run watcher', () => {
-    let next = {};
-    const gen = watcher();
-
-    next = gen.next();
-    expect(next.value).toMatchSnapshot();
   });
 });
